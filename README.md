@@ -1,70 +1,184 @@
-# Getting Started with Create React App
+# 📊 Real-Time Company Management & Workforce Tracking System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An enterprise-grade MERN stack application integrated with a Python-based tracking client to monitor employee activity in real time. The system includes workforce status monitoring, KPI analytics, live dashboards, location-based attendance, and employee performance visualization.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+### 🌐 Dashboard (React + Node.js)
+- Employee List with status (Active/Inactive)
+- Task Progress & Monthly Reports
+- KPI-based Performance Analytics
+- Top/Low Performer Charts
+- Real-time Attendance and Work Hours Tracking
+- Live Updates via WebSocket
+- Export data to CSV/Excel
+- Dark/Light Mode Support
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🖥️ Python WorkForce App
+- Tracks mouse and keyboard activity
+- Logs login/logout, active/inactive sessions
+- Detects work-from-home or office via Wi-Fi IP
+- Sends real-time updates to dashboard via WebSocket
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧑‍💻 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Layer         | Technology               |
+|---------------|--------------------------|
+| Frontend      | React.js, Tailwind CSS   |
+| Backend       | Node.js, Express.js      |
+| Database      | MongoDB (Mongoose ORM)   |
+| Real-time     | WebSocket (Socket.IO)    |
+| Tracking App  | Python (psutil, pynput)  |
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🏗️ Architecture Overview
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+[ Python WorkForce App ]
+        |
+     WebSocket
+        ↓
+[ WebSocket Server (Node.js) ]
+        |
+   MongoDB (Activity Logs)
+        |
+[ React Dashboard (Live Charts, KPIs, Tables) ]
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ⚙️ Setup Instructions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 📁 Clone the Repository
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/yourusername/workforce-dashboard.git
+cd workforce-dashboard
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🖥️ Backend Setup (Node.js + Express)
 
-## Learn More
+1. Navigate to `backend` folder:
+   ```bash
+   cd backend
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Create `.env` file:
+   ```env
+   MONGO_URI=mongodb://localhost:27017/workforce
+   PORT=5000
+   ```
 
-### Code Splitting
+4. Start backend server:
+   ```bash
+   npm run dev
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+### 💻 Frontend Setup (React)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Navigate to `frontend` folder:
+   ```bash
+   cd ../frontend
+   ```
 
-### Making a Progressive Web App
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Update WebSocket endpoint in `.env`:
+   ```env
+   REACT_APP_SOCKET_URL=http://localhost:5000
+   ```
 
-### Advanced Configuration
+4. Start the React app:
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+### 🐍 Python WorkForce Tracking App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Navigate to `python-tracker` folder:
+   ```bash
+   cd ../python-tracker
+   ```
 
-### `npm run build` fails to minify
+2. Create a virtual environment (optional):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # for Linux/macOS
+   venv\Scripts\activate     # for Windows
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. Install required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run the tracking app:
+   ```bash
+   python app.py
+   ```
+
+---
+
+## 📦 Folder Structure
+
+```plaintext
+📁 backend              # Express backend
+📁 frontend             # React Dashboard
+📁 python-tracker       # Python tracking app
+📄 README.md
+```
+
+---
+
+## 📊 Sample Dashboard Preview
+
+![Dashboard Screenshot](./preview/dashboard.png)
+
+---
+
+## 📋 To-Do / Improvements
+
+- [ ] Add JWT-based authentication
+- [ ] Deploy with Docker
+- [ ] Add Admin/HR role controls
+- [ ] Push notification integration (Slack/Email)
+- [ ] Mobile app version
+
+---
+
+## 📃 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first.
+
+---
+
+## 📧 Contact
+
+Made by HARSH SAINI(https://github.com/Sainiharsh25)  
+Email: harshsaini00025@gmai.com 
+Project: Real-Time Workforce Tracking System
